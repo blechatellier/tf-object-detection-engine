@@ -1,0 +1,26 @@
+syntax = 'proto3';
+
+service Grpc {
+  rpc Detect(Image) returns (Predictions) {} 
+}
+
+message Image {
+  bytes data = 1;
+}
+
+message Predictions {
+  repeated Prediction prediction = 1;
+}
+
+message Prediction {
+  string label = 1;
+  float score = 2;
+  Box box = 3;
+}
+
+message Box {
+  float top = 1;
+  float left = 2;
+  float bottom = 3;
+  float right = 4;
+}

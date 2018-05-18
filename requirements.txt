@@ -1,0 +1,5 @@
+numpy==1.14.2
+python-dotenv==0.8.2
+grpcio==1.11.0
+opencv-python==3.4.0.12
+Flask==0.12.2

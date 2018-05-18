@@ -1,0 +1,30 @@
+##########
+# Engine #
+##########
+FROM ubuntu:16.04
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        python3 \
+        python3-pip \
+        python3-setuptools \
+        libglib2.0-0 \
+        libsm6 \
+        libxrender1 \
+        libxext6 \
+        ca-certificates \
+        curl && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install --upgrade pip
+
+WORKDIR /engine
+
+COPY requirements.* downloads.sh ./
+RUN pip3 install wheel
+RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements.cpu.txt
+RUN ./downloads.sh
+
+COPY . .
+
+CMD python3 src/main.py
