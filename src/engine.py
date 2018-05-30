@@ -6,15 +6,13 @@ import numpy as np
 import tensorflow as tf
 
 class Engine:
-  MODELS_PATH = os.path.dirname(os.path.realpath(__file__)) + '/../models'
-
   def __init__(self, config):
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
     self.config = config
     self.sess = tf.Session()
-    self.labels = self.load_labels(Engine.MODELS_PATH + '/mscoco_label_map.pbtxt')
-    self.load_model(Engine.MODELS_PATH + '/' + self.config['model'] +'/frozen_inference_graph.pb')
+    self.labels = self.load_labels(config['model_path'] + '/mscoco_label_map.pbtxt')
+    self.load_model(config['model_path'] + '/' + self.config['model'] +'/frozen_inference_graph.pb')
 
     logging.info('Engine initialized')
 

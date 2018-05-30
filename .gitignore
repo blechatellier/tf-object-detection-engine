@@ -2,4 +2,6 @@ venv
 **/.vscode
 **/__pycache__
 .env
-models
+src/models
+*.spec
+build

@@ -1,7 +1,4 @@
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 config = {
   'host': os.getenv('HOST') or '0.0.0.0',
@@ -9,4 +6,5 @@ config = {
   'http_port': int(os.getenv('HTTP_PORT')) if os.getenv('HTTP_PORT') else 3000,
   'threshold': float(os.getenv('THRESHOLD')) if os.getenv('THRESHOLD') else 0.5,
   'model': os.getenv('MODEL') or 'ssd_inception_v2_coco_2017_11_17',
+  'model_path': os.getenv('MODEL_PATH') or os.path.dirname(os.path.realpath(__file__)) + '/models'
 }

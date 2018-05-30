@@ -31,3 +31,8 @@ venv/bin/python src/main.py
 venv/bin/python src/test_grpc.py src/test.jpg
 venv/bin/python src/test_grpc_webcam.py
 ```
+
+### Package
+```
+venv/bin/pyinstaller src/main.py --onefile --add-data 'src/models/mscoco_label_map.pbtxt:models' --add-data 'src/models/ssd_inception_v2_coco_2017_11_17/frozen_inference_graph.pb:models/ssd_inception_v2_coco_2017_11_17'
+```
